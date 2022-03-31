@@ -38,7 +38,6 @@ namespace CMP1903M_Assessment_1_Base_Code
                 {
                     Console.WriteLine("Couldn't find the file you are looking for.");
                     fileName = Console.ReadLine();
-
                 }
             return text;
         }
