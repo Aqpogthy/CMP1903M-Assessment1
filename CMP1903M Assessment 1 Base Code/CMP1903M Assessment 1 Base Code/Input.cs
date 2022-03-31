@@ -17,7 +17,7 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Gets text input from the keyboard
         public string manualTextInput()
         {
-            Console.WriteLine("Please enter your sentance to be analysed. You should input one line at a time. (End your last sentance with *)");
+            Console.WriteLine("Please enter your sentence to be analysed. You should input one line at a time. (End your last sentence with *)");
             string text = Console.ReadLine();
             return text;
         }
@@ -38,6 +38,7 @@ namespace CMP1903M_Assessment_1_Base_Code
                 {
                     Console.WriteLine("Couldn't find the file you are looking for.");
                     fileName = Console.ReadLine();
+
                 }
             return text;
         }

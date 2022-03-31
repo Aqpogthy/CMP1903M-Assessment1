@@ -32,15 +32,15 @@ namespace CMP1903M_Assessment_1_Base_Code
             
             
             List<string> text = new List<string>();
-            if (option == "1") //See if the user chose to enter the sentances manually
+            if (option == "1") //See if the user chose to enter the sentences manually
             {
-                bool EndSentances = false;
-                while (EndSentances == false) //Goes until '*' was the last char entered
+                bool Endsentences = false;
+                while (Endsentences == false) //Goes until '*' was the last char entered
                 {
-                    text.Add(UserInput.manualTextInput()); // User enters a single sentance which is added to the list of sentances.
+                    text.Add(UserInput.manualTextInput()); // User enters a single sentence which is added to the list of sentences.
                     if (text[text.Count() - 1][text[text.Count() - 1].Length - 1] == '*') //Sees if the last char that was entered was an '*'
                     {
-                        EndSentances = true; //Stops the loop
+                        Endsentences = true; //Stops the loop
                     }
                 }
 
@@ -61,8 +61,8 @@ namespace CMP1903M_Assessment_1_Base_Code
             parameters = AnalyseText.analyseText(text);
 
             //Report the results of the analysis
-            Report SentanceReport = new Report();
-            SentanceReport.OutputAnalsis(parameters, AnalyseText.GetFrequency());
+            Report sentenceReport = new Report();
+            sentenceReport.Outputanalysis(parameters, AnalyseText.GetFrequency());
             //TO ADD: Get the frequency of individual letters?
 
             Console.ReadLine();

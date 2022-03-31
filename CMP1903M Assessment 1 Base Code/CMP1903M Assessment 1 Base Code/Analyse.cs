@@ -9,6 +9,7 @@ namespace CMP1903M_Assessment_1_Base_Code
     public class Analyse
     {
         Dictionary<char, int> Frequency = new Dictionary<char, int>();
+        List<string> LongWords = new List<string>();
 
         //Handles the analysis of text
 
@@ -29,17 +30,19 @@ namespace CMP1903M_Assessment_1_Base_Code
 
             //1. Number of sentences
             values[0] += text.Count;
+
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
             
             for (int i = 0; i < text.Count; i++)
             {
-                if (text[i].Length == 1)
+                if (text[i].Length <= 1)
                 {
-                    values[0] -= 1;
+                    values[0] -= 1; //This checks to see if the sentence is only one character. This solves the problem of having * at the end as well as ellipses and interrobangs
                 }
                 for (int j = 0; j < text[i].Length; j++)
                 {
                     //2. Number of vowels
-                    if (text[i][j].ToString().ToLower() == "a" || text[i][j].ToString().ToLower() == "e" || text[i][j].ToString().ToLower() == "i" || text[i][j].ToString().ToLower() == "o" || text[i][j].ToString().ToLower() == "u") //checks if vowel - have to convert to string to lowercase the char otherwise it wouldnt read 'E' as a vowel
+                    if (vowels.Contains(char.ToLower(text[i][j])))
                     {
                         values[1] += 1; //add 1 to counter if it is a vowel
                     }
@@ -59,11 +62,19 @@ namespace CMP1903M_Assessment_1_Base_Code
                     {
                         values[4] += 1; //if not capatalised then add counter to lowercase
                         FrequentLetters(text[i][j]);
+                    }                    
+                }
+                string[] words = text[i].Split(' ', ',');
+                foreach (string word in words)
+                {
+                    if (word.Length >= 7)
+                    {
+                        LongWords.Add(word);
                     }
-                    
                 }
             }
-            
+            File.WriteAllLines(String.Concat(Environment.CurrentDirectory.ToString(), "\\longwords.txt"), LongWords);
+
             return values;
         }
         //Method: FrequentLetters
@@ -86,6 +97,10 @@ namespace CMP1903M_Assessment_1_Base_Code
         public Dictionary<char, int> GetFrequency()
         {
             return Frequency;
+        }
+        public List<string> GetLongWords()
+        {
+            return LongWords;
         }
     }
 }
