@@ -81,7 +81,7 @@ namespace CMP1903M_Assessment_1_Base_Code
         //Arguments: char
         //Returns: list of integers
         //Calculates and returns an analysis of the text
-        public void FrequentLetters(char letter)
+        private void FrequentLetters(char letter) //encapsulation not intended to be accessed by the user
         {
             letter = char.ToUpper(letter);
             if (Frequency.ContainsKey(letter))
@@ -93,11 +93,16 @@ namespace CMP1903M_Assessment_1_Base_Code
                 Frequency[letter] = 1;
             }
         }
-        
+        //Method: GetFrequency
+        //Arguments: none
+        //Returns: Dictionary of Frequent letters
         public Dictionary<char, int> GetFrequency()
         {
             return Frequency;
         }
+        //Method: GetLongWords
+        //Arguments: none
+        //Returns: list of string
         public List<string> GetLongWords()
         {
             return LongWords;
